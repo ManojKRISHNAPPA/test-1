@@ -1,38 +1,25 @@
-<!-- navbar -->
-<nav class="navbar">
-    <img src="img/logo.png" class="logo" alt="">
-    <form class="search-box">
-        <input type="text" placeholder="search" name="search-query" id="search-input">
-        <button class="search-btn" type="submit"><img src="img/icon/search.png" class="search-icon" alt=""></button>
+<!-- Example-->
+
+<!-- Form Module-->
+<div class="module form-module">
+  <div class="toggle"><i class="fa fa-times fa-pencil"></i>
+    <div class="tooltip">Click Me</div>
+  </div>
+  <div class="form">
+    <h2>Login to your account</h2>
+    <form method="POST">
+      {% csrf_token %}
+      {{ login_form }}
+      <button>Login</button>
     </form>
-    <div class="nav-links">
-        <a href="#" class="nav-links"><img src="img/icon/home-fill.png" class="nav-icon" alt=""></a>
-        <div class="activity-log">
-            <img src="img/icon/heart-nofill.png" class="nav-icon" alt="">
-            <div class="activity-container hide">
-                <div class="activity-card">
-                    <img src="img/user1.png" class="user-img" alt="">
-                    <p class="activity"><b>@siri</b> liked your post</p>
-                    <img src="img/posts/post1.png" class="activity-post" alt="">
-                </div>
-                <div class="activity-card">
-                    <img src="img/user2.png" class="user-img" alt="">
-                    <p class="activity"><b>@siri</b> liked your post</p>
-                    <img src="img/posts/post1.png" class="activity-post" alt="">
-                </div>
-                <div class="activity-card">
-                    <img src="img/user1.png" class="user-img" alt="">
-                    <p class="activity"><b>@siri</b> liked your post</p>
-                    <img src="img/posts/post1.png" class="activity-post" alt="">
-                </div>
-                <div class="activity-card">
-                    <img src="img/user3.png" class="user-img" alt="">
-                    <p class="activity"><b>@siri</b> liked your post</p>
-                    <img src="img/posts/post1.png" class="activity-post" alt="">
-                </div>
-            </div>
-        </div>
-        <a href="#" class="nav-links"><img src="img/icon/add-nofill.png" class="nav-icon" alt=""></a>
-        <a href="#" class="nav-links"><img src="img/profile-img.png" class="nav-icon user-profile" alt=""></a>
-    </div>
-</nav>
+  </div>
+  <div class="form">
+    <h2>Create an account</h2>
+    <form method="POST">
+      {% csrf_token %}
+      {{ register_form }}
+      <button>Register</button>
+    </form>
+  </div>
+  <div class="cta"><a href="#">Forgot your password?</a></div>
+</div>
