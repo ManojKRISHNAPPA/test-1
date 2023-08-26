@@ -1,25 +1,66 @@
-<!-- Example-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virat Kohli Blog</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
 
-<!-- Form Module-->
-<div class="module form-module">
-  <div class="toggle"><i class="fa fa-times fa-pencil"></i>
-    <div class="tooltip">Click Me</div>
-  </div>
-  <div class="form">
-    <h2>Login to your account</h2>
-    <form method="POST">
-      {% csrf_token %}
-      {{ login_form }}
-      <button>Login</button>
-    </form>
-  </div>
-  <div class="form">
-    <h2>Create an account</h2>
-    <form method="POST">
-      {% csrf_token %}
-      {{ register_form }}
-      <button>Register</button>
-    </form>
-  </div>
-  <div class="cta"><a href="#">Forgot your password?</a></div>
-</div>
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .post {
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+        }
+
+        .post h2 {
+            margin-top: 0;
+        }
+
+        .post p {
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Virat Kohli Blog</h1>
+        <p>Exploring the cricket journey of Virat Kohli</p>
+    </header>
+    <div class="container">
+        <div class="post">
+            <h2>The Early Years</h2>
+            <p>Virat Kohli, born on November 5, 1988, in Delhi, India...</p>
+        </div>
+        <div class="post">
+            <h2>Rise to International Stardom</h2>
+            <p>Virat's exceptional batting skills...</p>
+        </div>
+        <div class="post">
+            <h2>Records and Achievements</h2>
+            <p>Throughout his career, Virat Kohli has set numerous records...</p>
+        </div>
+    </div>
+</body>
+</html>
+
