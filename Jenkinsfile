@@ -1,12 +1,9 @@
-pipeline{
-    agent {
-        label 'test'
-    }
-    tools {
+pipeline {
+    agent any
+    tools{
         jdk 'java-11'
         maven 'maven'
     }
-
     stages{
         stage('git checkout'){
             steps{
@@ -14,15 +11,14 @@ pipeline{
             }
         }
         stage('compile'){
-            steps {
+            steps{
                 sh "mvn compile"
             }
         }
         stage('Build'){
-            steps {
-                sh "mvn package"
+            steps{
+                sh "mvn pacakge" 
             }
         }
-
     }
 }
