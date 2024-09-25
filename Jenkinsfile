@@ -20,5 +20,15 @@ pipeline {
                 sh "mvn clean install" 
             }
         }
+        stage('Build and Tag Docker file'){
+            steps{
+                sh "docker build -t manojkrishnappa/project:1 ."
+            }
+        }
+        stage('Containersation'){
+            steps{
+                sh 'docker run -it -d --name c1 -p 8081:8080 manojkrishnappa/project:1'
+            }
+        }
     }
 }
