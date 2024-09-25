@@ -25,6 +25,11 @@ pipeline {
                 sh "docker build -t manojkrishnappa/project:1 ."
             }
         }
+        stage('Docker image scan'){
+            steps{
+                 sh "trivy image --format table -o trivy-image-report.html manojkrishnappa/project:1"
+            }
+        }
         stage('Containersation'){
             steps{
                 sh '''
