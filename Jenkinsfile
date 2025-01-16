@@ -55,7 +55,5 @@ pipeline {
                 sh 'docker push manojkrishnappa/project:1'
             }
         }
-
-
     }
 }
