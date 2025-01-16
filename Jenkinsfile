@@ -50,7 +50,6 @@ pipeline {
                         }
                     }
         }
-
         stage('Pushing image to repository'){
             steps{
                 sh 'docker push manojkrishnappa/puneethrajkumar:1'
