@@ -48,9 +48,9 @@ pipeline {
         stage('Containersation') {
             steps {
                 sh '''
-                    docker stop c1 || true
-                    docker rm c1 || true
-                    docker run -it -d --name c1 -p 9001:8080 manojkrishnappa/webapp:1
+                    docker stop c3 || true
+                    docker rm c3 || true
+                    docker run -it -d --name c3 -p 9004:8080 manojkrishnappa/webapp:1
                 '''
             }
         }
