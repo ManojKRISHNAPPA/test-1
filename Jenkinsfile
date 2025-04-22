@@ -36,7 +36,7 @@ pipeline {
                 sh '''
                     // docker stop  c1
                     // docker rm c1 
-                    docker run -it -d --name c1 -p 9001:8080 manojkrishnappa/project:1
+                    docker run -it -d --name c1 -p 9002:8080 manojkrishnappa/project:1
                 '''
             }
         }
