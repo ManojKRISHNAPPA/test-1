@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Git checkout') {
             steps {
-                git branch: 'TEST-1', url: 'https://github.com/prathikmr7/test-1.git'
+                git branch: 'main', url: 'https://github.com/prathikmr7/test-1.git'
             }
         }
         stage('Compile') {
@@ -53,7 +53,7 @@ pipeline {
         stage('Login to Docker Hub') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
-                    sh 'echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin'
+                    sh 'echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin '
                 }
             }
         }
