@@ -1,0 +1,66 @@
+pipeline {
+    agent any
+
+    tools {
+        jdk 'java-17'
+        maven 'maven'
+    }
+
+    stages {
+        stage('Git checkout') {
+            steps {
+                git branch: 'main', url: 'https://github.com/prathikmr7/test-1.git'
+            }
+        }
+        stage('Compile') {
+            steps {
+                sh 'mvn compile'
+            }
+        }
+        stage('Build') {
+            steps {
+                sh 'mvn clean install'
+            }
+        }
+        stage('Code Scan') {
+            steps {
+                withCredentials([string(credentialsId: 'sonarqube', variable: 'SONAR_AUTH_TOKEN')]) {
+                    sh 'mvn sonar:sonar -Dsonar.login=$SONAR_AUTH_TOKEN -Dsonar.host.url=http://13.234.217.231:9000/'
+                }
+            }
+        }
+        stage('Build and Tag') {
+            steps {
+                sh 'docker build -t prathikmr/webapp:1 .'
+            }
+        }
+        stage('Docker Image Scan') {
+            steps {
+                sh 'trivy image --format table -o trivy-image-report.html prathikmr/webapp:1'
+            }
+        }
+        stage('Containerization') {
+            steps {
+                script {
+                    sh '''
+                        docker stop c3 || true
+                        docker rm c3 || true
+                        docker run -it -d --name c3 -p 9004:8080 prathikmr/webapp:1
+                    '''
+                }
+            }
+        }
+        stage('Login to Docker Hub') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
+                    sh 'echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin '
+                }
+            }
+        }
+        stage('Pushing Image to Repository') {
+            steps {
+                sh 'docker push prathikmr/webapp:1'
+            }
+        }
+    }
+}
