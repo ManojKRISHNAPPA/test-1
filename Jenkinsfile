@@ -22,11 +22,6 @@ pipeline{
 				sh 'mvn clean install'
 			}
 		}
-		stage('Compile'){
-			steps{
-				sh 'mvn compile'
-			}
-		}
 		stage('Building-DockerImage'){
 			steps{
 				sh 'docker build -t manojkrishnappa/continous-intergartion:1 .'
